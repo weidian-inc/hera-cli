@@ -1,10 +1,36 @@
 var example = require('./example.js')
 
 Page({
-  data: {
-    imglist: [
-      'http://xrs.duoguan.com/2017-05-20_591fee686f8e5.jpg',
-      'http://40.ixiaochengxu.cc/Uploads/Picture/2016-11-22/5833f8d0587ff.png'
-    ]
+  onLoad: function () {
+    this.context = wx.createContext()
+
+    var methods = Object.keys(example)
+    this.setData({
+      methods: methods
+    })
+
+    var that = this
+    methods.forEach(function (method) {
+      that[method] = function () {
+        example[method](that.context)
+        var actions = that.context.getActions()
+
+        wx.drawCanvas({
+          canvasId: 'canvas',
+          actions: actions
+        })
+      }
+    })
+  },
+  toTempFilePath: function () {
+    wx.canvasToTempFilePath({
+      canvasId: 'canvas',
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        console.log(res)
+      }
+    })
   }
 })

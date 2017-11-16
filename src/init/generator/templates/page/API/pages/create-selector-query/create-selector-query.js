@@ -4,12 +4,12 @@ Page({
       .createSelectorQuery()
       .select('#the-id')
       .fields(
-        {
-          dataset: true,
-          size: true,
-          scrollOffset: true,
-          properties: ['scrollX', 'scrollY']
-        },
+      {
+        dataset: true,
+        size: true,
+        scrollOffset: true,
+        properties: ['scrollX', 'scrollY']
+      },
         function (res) {
           console.log(res)
           // res.dataset    // 节点的dataset
