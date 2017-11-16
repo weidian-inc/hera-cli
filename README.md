@@ -1,18 +1,18 @@
 # hera-cli
 
-Hera 项目脚手架，可以将小程序运行于iOS\Android\浏览器中
+Hera 项目脚手架，可以将小程序运行于iOS\Android\浏览器中
 
 ## 各端依赖
 
-> 前端依赖必须阅读，客户端内容请按需阅读！ 注意使用客户端调试时，PC 和客户端需处于同一网络中。
+> 前端依赖必须阅读，客户端内容请按需阅读！ 注意使用客户端调试时，PC 和客户端需处于同一网络中。
 
 ### 前端
 
-> 尽量使用最新的[node](https://nodejs.org/en/)环境, 最低要求：v7.6.0
+> 尽量使用最新的[node](https://nodejs.org/en/)环境, 最低要求：v7.6.0
 
 ### iOS
 
-> 使用模拟器调试只需安装 Xcode 即可，[真机调试](#真机调试)需另做配置。
+> 使用模拟器调试只需安装 Xcode 即可，[真机调试](#真机调试)需另做配置。
 
 目前需要 `Xcode 8.0` 或更高版本。你可以通过App Store或是到[Apple开发者官网](https://developer.apple.com/xcode/downloads/)上下载。这一步骤会同时安装Xcode IDE和Xcode的命令行工具。
 
@@ -92,9 +92,9 @@ sudo npm install -g ios-deploy --allow-root
 # 或：为 nobody 用户添加 /usr/local/lib/node_modules/ios-deploy/ios-deploy 文件的写权限
 ```
 
-安装完该依赖后即可开始项目的初始化（hera init projName）和构建运行（hera run ios）
+安装完该依赖后即可开始项目的初始化（hera init projName）和构建运行（hera run ios）
 
-- 构建过程中会报错，提示您使用 Xcode 打开iOS项目
+- 构建过程中会报错，提示您使用 Xcode 打开iOS项目
 
 ![](docs/assets/team-message-alert.png)
 
@@ -109,7 +109,7 @@ sudo npm install -g ios-deploy --allow-root
 hera run server
 ```
 
-- 点击 Xcode 左上角的运行按钮，将应用安装到真机中，第一次运行可能会出现如下信息，按着提示进行授权即可：打开您的 iPhone -> 打开设置 -> 通用 -> 最下方的设备管理 -> 选择您的 Apple ID -> 点击信任，完成上述操作后回到 Xcode，点击运行即可。
+- 点击 Xcode 左上角的运行按钮，将应用安装到真机中，第一次运行可能会出现如下信息，按着提示进行授权即可：打开您的 iPhone -> 打开设置 -> 通用 -> 最下方的设备管理 -> 选择您的 Apple ID -> 点击信任，完成上述操作后回到 Xcode，点击运行即可。
 
 ![](docs/assets/xcode-cert-alert.png)
 
@@ -117,7 +117,7 @@ hera run server
 
 ### 使用已有的小程序项目
 
-如果您已有编写好的小程序，可以将其放置到一个新的文件夹中，并在新文件夹的根目录创建一个 config.json 文件，在其中填入开发好的小程序的目录名称即可：
+如果您已有编写好的小程序，可以将其放置到一个新的文件夹中，并在新文件夹的根目录创建一个 config.json 文件，在其中填入开发好的小程序的目录名称即可：
 
 ```json
 {
@@ -131,7 +131,7 @@ hera run server
 herademo
 ├── config.json     配置文件
 ├── .gitignore
-├── heraPlatforms   客户端代码
+├── heraPlatforms   客户端代码
 ├── heraTmp         中间产物
 ├── heraTmp         中间产物
 ├── src             小程序 Build 之前的代码
