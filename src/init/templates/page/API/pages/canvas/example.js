@@ -282,7 +282,6 @@ example.setLineWidth = function (context) {
 
 example.setMiterLimit = function (context) {
   context.setLineWidth(4)
-
   ;[2, 4, 6, 8, 10].forEach(function (item, index) {
     context.beginPath()
     context.setMiterLimit(item)

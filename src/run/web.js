@@ -2,6 +2,7 @@ const { tmpDistDir } = require('../config')
 const { boxLog, exec, spawn } = require('../utils')
 const path = require('path')
 const fs = require('fs')
+const chalk = require('chalk')
 /**
  * Start web service
  * @param {Object} options
@@ -18,7 +19,8 @@ function runWeb (options) {
     projDir = JSON.parse(content).dir
   } else {
     boxLog(
-      'create config.json manually, fill it with: {"dir": "path/to/wxapp"}'
+      chalk.yellow('cd to your project\n') +
+        'or create config.json manually, fill it with: {"dir": "path/to/wxapp"}'
     )
   }
 

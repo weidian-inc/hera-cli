@@ -30,7 +30,7 @@ Page({
             url: 'openlink/openlink'
           }
         ]
-      }, 
+      },
       {
         id: 'page',
         name: '界面',
@@ -40,40 +40,49 @@ Page({
             zh: '设置界面标题',
             url: 'set-navigation-bar-title/set-navigation-bar-title'
           },
-           {
+          {
             zh: '设置标题栏颜色',
             url: 'set-navigation-bar-color/set-navigation-bar-color'
-          }, {
+          },
+          {
             zh: '标题栏加载动画',
             url: 'navigation-bar-loading/navigation-bar-loading'
-          }, {
+          },
+          {
             zh: '页面跳转',
             url: 'navigator/navigator'
-          }, {
+          },
+          {
             zh: '下拉刷新',
             url: 'pull-down-refresh/pull-down-refresh'
-          }, {
+          },
+          {
             zh: '创建动画',
             url: 'animation/animation'
-          }, {
+          },
+          {
             zh: '创建绘画',
             url: 'canvas/canvas'
-          }, {
+          },
+          {
             zh: '显示操作菜单',
             url: 'action-sheet/action-sheet'
-          }, {
+          },
+          {
             zh: '显示模态弹窗',
             url: 'modal/modal'
-          }, {
+          },
+          {
             zh: '显示消息提示框',
             url: 'toast/toast'
-          }, 
+          }
           // {
           //   zh: 'WXML节点信息',
           //   url: 'create-selector-query/create-selector-query'
           // }
         ]
-      }, {
+      },
+      {
         id: 'device',
         name: '设备',
         open: false,
@@ -81,26 +90,29 @@ Page({
           {
             zh: '获取手机网络状态',
             url: 'get-network-type/get-network-type'
-          }, {
+          },
+          {
             zh: '获取手机系统信息',
             url: 'get-system-info/get-system-info'
-          }, 
+          },
           // {
           //   zh: '监听重力感应数据',
           //   url: 'on-accelerometer-change/on-accelerometer-change'
           // }, {
           //   zh: '监听罗盘数据',
           //   url: 'on-compass-change/on-compass-change'
-          // }, 
+          // },
           {
             zh: '打电话',
             url: 'make-phone-call/make-phone-call'
-          }, {
+          },
+          {
             zh: '扫码',
             url: 'scan-code/scan-code'
           }
         ]
-      }, {
+      },
+      {
         id: 'network',
         name: '网络',
         open: false,
@@ -112,16 +124,18 @@ Page({
           //  {
           //   zh: 'WebSocket',
           //   url: 'web-socket/web-socket'
-          // }, 
+          // },
           {
             zh: '上传文件',
             url: 'upload-file/upload-file'
-          }, {
+          },
+          {
             zh: '下载文件',
             url: 'download-file/download-file'
           }
         ]
-      }, {
+      },
+      {
         id: 'media',
         name: '媒体',
         open: false,
@@ -136,17 +150,17 @@ Page({
           // }, {
           //   zh: '背景音频',
           //   url: 'background-audio/background-audio'
-          // }, 
+          // },
           {
             zh: '文件',
             url: 'file/file'
-          }, 
+          }
           // {
           //   zh: '视频',
           //   url: 'video/video'
           // }
         ]
-      }, 
+      },
       // {
       //   id: 'location',
       //   name: '位置',
@@ -163,7 +177,7 @@ Page({
       //       url: 'choose-location/choose-location'
       //     }
       //   ]
-      // }, 
+      // },
       {
         id: 'storage',
         name: '数据',
@@ -172,10 +186,11 @@ Page({
     ]
   },
   kindToggle: function (e) {
-    var id = e.currentTarget.id, list = this.data.list;
+    var id = e.currentTarget.id,
+      list = this.data.list
     for (var i = 0, len = list.length; i < len; ++i) {
       if (list[i].id == id) {
-        if(list[i].url){
+        if (list[i].url) {
           wx.navigateTo({
             url: 'pages/' + list[i].url
           })
@@ -188,6 +203,6 @@ Page({
     }
     this.setData({
       list: list
-    });
+    })
   }
 })

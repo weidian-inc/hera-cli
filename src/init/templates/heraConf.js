@@ -1,5 +1,5 @@
 module.exports = {
-  extApi:[
+  extApi: [
     {
       name: 'testApi',
       fn: function (params) {
