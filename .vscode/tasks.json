@@ -1,0 +1,22 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+      {
+        "taskName": "rmdemo",
+        "type": "shell",
+        "command": "rm -rf herademo"
+      },
+      {
+        "taskName": "rmAndroid",
+        "type": "shell",
+        "command": "rm -rf herademo/heraPlatforms/android"
+      },
+      {
+        "taskName": "rmIOS",
+        "type": "shell",
+        "command": "rm -rf herademo/heraPlatforms/ios"
+      }
+  ]
+}

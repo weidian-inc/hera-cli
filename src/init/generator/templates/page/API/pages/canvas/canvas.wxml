@@ -1,0 +1,9 @@
+<view>
+<block wx:for="{{imglist}}" wx:key="*this">
+  <swiper-item>
+    <image src="{{item}}" mode="aspectFill" />
+  </swiper-item>
+</block>
+
+</view>
+

@@ -1,0 +1,44 @@
+{
+  "name": "hera-cli",
+  "version": "1.0.7",
+  "description": "Hera Project Creator",
+  "main": "bin/herapack",
+  "scripts": {
+    "test": "npm test",
+    "format": "prettier-standard '{src/**/*.js,bin/herapack}'",
+    "precommit": "lint-staged"
+  },
+  "bin": {
+    "hera": "bin/herapack"
+  },
+  "lint-staged": {
+    "{src/**/*.js,bin/herapack,*.json}": ["prettier-standard", "git add"]
+  },
+  "keywords": ["wxapp", "hera"],
+  "author": "Junjie Ding",
+  "license": "MIT",
+  "dependencies": {
+    "hera-weweb": "^1.0.0",
+    "boxen": "^1.2.2",
+    "chalk": "^2.3.0",
+    "commander": "^2.11.0",
+    "detect-port": "^1.2.2",
+    "ip": "^1.1.5",
+    "koa": "^2.4.1",
+    "koa-body": "^2.5.0",
+    "koa-logger": "^3.1.0",
+    "koa-router": "^7.3.0",
+    "koa-send": "^4.1.1",
+    "md5": "^2.2.1",
+    "npm": "^5.5.1",
+    "pify": "^3.0.0",
+    "weweb-cli": "^0.4.6",
+    "yeoman-environment": "^2.0.5",
+    "yeoman-generator": "^2.0.1"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^5.0.0",
+    "prettier-standard": "^7.0.3"
+  }
+}

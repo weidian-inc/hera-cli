@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const { init, add, run } = require('../src/index')
+program.version(require('../package').version).usage('<command> [options]')
+
+program
+  .command('init [name]')
+  .description('initialize a standard hera project')
+  .option('-c, --config_file [file]', 'configfile')
+  .action(function (name, options) {
+    init(name, options.config_file)
+  })
+
+program
+  .command('run [platform]')
+  .description('run on platform')
+  .option('-p, --port [port]', 'port to serve')
+  .option('-c, --changeFramework', 'change framework')
+  .action(function (platform, options) {
+    options.platform = platform.toLowerCase()
+    run(platform, options)
+  })
+
+program
+  .command('add [platform]')
+  .description('command for add platform project')
+  .action(function (platform, options) {
+    add(platform, options.config_file)
+  })
+
+program.parse(process.argv)
