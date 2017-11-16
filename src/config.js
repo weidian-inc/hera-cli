@@ -1,6 +1,6 @@
 module.exports = {
-  iOSRepo: 'git@github.com:weidian-inc/hera-ios-sample.git',
-  androidRepo: 'git@github.com:weidian-inc/hera-android-sample.git',
+  iOSRepo: 'https://github.com/weidian-inc/hera-ios-sample.git',
+  androidRepo: 'https://github.com/weidian-inc/hera-android-sample.git',
   androidAPKName: 'app/build/outputs/apk/app-debug.apk',
   androidManifestFile: 'app/src/main/AndroidManifest.xml',
   androidMainActivity: 'SampleActivity',
