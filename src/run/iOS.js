@@ -100,8 +100,12 @@ function prepareIOS (options) {
  */
 function installDep ({ xcodeProject, options, rootPath }) {
   console.log(` => ${chalk.cyan.bold('Installing Pod Dependencies')}`)
+  const msg =
+    '请先使用如下命令安装 cocoapods\n' +
+    'sudo gem install cocoapods\n' +
+    '参考：https://weidian-inc.github.io/hera/#/basics/quickstart'
   return (
-    spawn({ command: 'pod update' })
+    spawn({ command: 'pod update', msg: chalk.yellow(msg) })
       // .then(() =>
       //   spawn({ command: 'pod install' })
       // )
