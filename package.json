@@ -1,6 +1,6 @@
 {
   "name": "hera-cli",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Hera Project Creator",
   "main": "bin/herapack",
   "scripts": {
@@ -24,6 +24,7 @@
     "detect-port": "^1.2.2",
     "fs-extra": "^4.0.2",
     "hera-weweb": "^1.0.0",
+    "inquirer": "^4.0.0",
     "ip": "^1.1.5",
     "koa": "^2.4.1",
     "koa-body": "^2.5.0",
