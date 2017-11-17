@@ -35,7 +35,7 @@ function runAndroid (options) {
     .then(prepareAndroid)
     .then(({ options, rootPath }) => {
       const appSrc = `../../${tmpDistDir}/app/app.zip`
-      const appDist = `app/src/main/assets/demo.zip`
+      const appDist = `app/src/main/assets/demoapp.zip`
       return copy(appSrc, appDist).then(() => ({ options, rootPath }))
     })
     .then(findAndroidDevice)

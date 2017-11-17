@@ -23,7 +23,7 @@ function runIOS (options) {
     .then(prepareIOS)
     .then(({ xcodeProject, options, rootPath }) => {
       const appSrc = `../../${tmpDistDir}/app/app.zip`
-      const appDist = `HeraDemo/demo.zip`
+      const appDist = `HeraDemo/demoapp.zip`
       return copy(appSrc, appDist).then(() => ({
         xcodeProject,
         options,
