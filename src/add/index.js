@@ -14,6 +14,7 @@ const {
   // androidConfigFile,
   // iosConfigFile
 } = require('../config')
+const fse = require('fs-extra')
 const chalk = require('chalk')
 // const promisify = require('pify')
 // const ip = require('ip')
@@ -67,7 +68,8 @@ module.exports = function (options) {
     // return editConfigFile(configFilePath, options.port || defaultPort)
   } else {
     return (
-      exec(`mkdir -p ${platformDir}`)
+      fse
+        .mkdirp(platformDir)
         .then(() => {
           timer = setInterval(() => {
             if (downloading) {
