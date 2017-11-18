@@ -12,7 +12,7 @@ const {
   spawn,
   boxLog
 } = require('../utils')
-const startJSServer = require('../utils/server')
+// const startJSServer = require('../utils/server')
 // const addAndroid = require('../add/Android')
 const addPlatform = require('../add')
 const {
@@ -40,7 +40,7 @@ function runAndroid (options) {
     })
     .then(findAndroidDevice)
     .then(chooseDevice)
-    .then(reverseDevice)
+    // .then(reverseDevice)
     .then(buildApp)
     .then(installApp)
     .then(runApp)
@@ -158,9 +158,7 @@ function chooseDevice ({ devicesList, options }) {
       reject(new Error('No android devices found.'))
     }
   }).catch(e => {
-    boxLog(
-      chalk.yellow.bold('Try to connect a device or start a virtual machine.')
-    )
+    boxLog(chalk.yellow.bold('请连接安卓手机或开启安卓虚拟机'))
     process.exit(1)
   })
 }
@@ -206,9 +204,12 @@ function buildApp ({ device, options }) {
     console.log(` => ${chalk.cyan.bold('Building app ...')}`)
     if (!fs.existsSync('local.properties')) {
       try {
+        const escapePath = text => {
+          return text.replace(/[-[\]{}()*+?.,\\^$|#:\s]/g, '\\$&')
+        }
         fs.writeFileSync(
           'local.properties',
-          `sdk.dir=${process.env.ANDROID_HOME}`
+          `sdk.dir=${escapePath(process.env.ANDROID_HOME)}`
         )
       } catch (e) {
         reject(e.message)
