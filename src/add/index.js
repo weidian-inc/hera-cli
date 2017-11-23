@@ -1,27 +1,7 @@
-const {
-  exec,
-  // copy,
-  spawn,
-  checkIOS,
-  checkAndroid,
-  boxLog
-} = require('../utils')
-const {
-  iOSRepo,
-  androidRepo,
-  platformDir
-  // tmpDistDir,
-  // androidConfigFile,
-  // iosConfigFile
-} = require('../config')
+const { spawn, checkIOS, checkAndroid, boxLog } = require('../utils')
+const { iOSRepo, androidRepo, platformDir } = require('../config')
 const fse = require('fs-extra')
 const chalk = require('chalk')
-// const promisify = require('pify')
-// const ip = require('ip')
-
-// const fs = require('fs')
-// const readFileAsync = promisify(fs.readFile) // (A)
-// const writeFileAsync = promisify(fs.writeFile)
 
 let downloading = true
 let timer = null

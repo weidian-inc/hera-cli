@@ -3,17 +3,8 @@ const chalk = require('chalk')
 const childProcess = require('child_process')
 const fs = require('fs')
 const inquirer = require('inquirer')
-// const copy = require('recursive-copy')
-const {
-  buildJS,
-  parseDevicesResult,
-  exec,
-  copy,
-  spawn,
-  boxLog
-} = require('../utils')
+const { buildJS, parseDevicesResult, copy, spawn, boxLog } = require('../utils')
 // const startJSServer = require('../utils/server')
-// const addAndroid = require('../add/Android')
 const addPlatform = require('../add')
 const {
   defaultPort,
@@ -23,7 +14,6 @@ const {
   tmpDistDir,
   platformDir
 } = require('../config')
-// const { Config, androidConfigResolver } = require('../utils/config')
 
 /**
  * Build and run Android app on a connected emulator or device

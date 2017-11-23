@@ -177,7 +177,7 @@ const utils = {
       process.exit(1)
     }
     const buildFramework = `node ${weweb} ${projDir} -b -d ${tmpDistDir}/framework`
-    const buildDist = `node ${weweb} ${projDir} -d ${tmpDistDir}/app`
+    const buildDist = `node ${weweb} ${projDir} -d ${tmpDistDir}/app `
 
     console.log(` => ${chalk.cyan.bold('start building app')}`)
     return utils

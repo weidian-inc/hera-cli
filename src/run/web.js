@@ -1,5 +1,5 @@
 const { tmpDistDir } = require('../config')
-const { boxLog, exec, spawn } = require('../utils')
+const { boxLog, spawn } = require('../utils')
 const path = require('path')
 const fs = require('fs')
 const chalk = require('chalk')
@@ -24,7 +24,7 @@ function runWeb (options) {
     )
   }
 
-  const buildWeb = `node ${weweb} ${projDir} -d ${tmpDistDir}/web`
+  const buildWeb = `node ${weweb} ${projDir} -b -d ${tmpDistDir}/web`
   console.log(buildWeb)
   return spawn({ command: buildWeb })
 }
