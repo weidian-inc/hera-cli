@@ -24,7 +24,7 @@ function runWeb (options) {
     )
   }
 
-  const buildWeb = `node ${weweb} ${projDir} -b -d ${tmpDistDir}/web`
+  const buildWeb = `node '${weweb}' ${projDir} -b -d ${tmpDistDir}/web`
   console.log(buildWeb)
   return spawn({ command: buildWeb })
 }

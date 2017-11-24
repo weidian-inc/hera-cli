@@ -176,8 +176,8 @@ const utils = {
       utils.boxLog(`请先进入您新建的项目：cd projName`)
       process.exit(1)
     }
-    const buildFramework = `node ${weweb} ${projDir} -b -d ${tmpDistDir}/framework`
-    const buildDist = `node ${weweb} ${projDir} -d ${tmpDistDir}/app `
+    const buildFramework = `node '${weweb}' ${projDir} -b -d ${tmpDistDir}/framework`
+    const buildDist = `node '${weweb}' ${projDir} -d ${tmpDistDir}/app `
 
     console.log(` => ${chalk.cyan.bold('start building app')}`)
     return utils

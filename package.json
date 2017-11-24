@@ -1,6 +1,6 @@
 {
   "name": "hera-cli",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Hera Project Creator",
   "main": "bin/herapack",
   "scripts": {
@@ -39,6 +39,7 @@
     "md5": "^2.2.1",
     "npm": "^5.5.1",
     "pify": "^3.0.0",
+    "update-notifier": "^2.3.0",
     "weweb-cli": "^1.0.2"
   },
   "devDependencies": {

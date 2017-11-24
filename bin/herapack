@@ -2,6 +2,10 @@
 
 const program = require('commander')
 const { init, add, run } = require('../src/index')
+const UpdateNotifier = require('update-notifier').UpdateNotifier
+var json = require('../package.json')
+const chalk = require('chalk')
+const boxen = require('boxen')
 program.version(require('../package').version).usage('<command> [options]')
 
 program
@@ -28,5 +32,36 @@ program
   .action(function (platform, options) {
     add(platform, options.config_file)
   })
+
+// 更新检查方法
+var notifier = new UpdateNotifier({
+  pkg: json,
+  callback: function (err, result) {
+    if (err) return
+    if (result.current !== result.latest) {
+      var message =
+        'Update available ' +
+        chalk.dim(result.current) +
+        chalk.reset(' → ') +
+        chalk.green(result.latest) +
+        ' \nRun ' +
+        chalk.cyan('npm i -g ' + json.name) +
+        ' to update'
+      var msg =
+        '\n' +
+        boxen(message, {
+          padding: 1,
+          margin: 1,
+          align: 'center',
+          borderColor: 'yellow',
+          borderStyle: 'round'
+        })
+      console.log(msg)
+    }
+  }
+})
+
+// 执行更新检查
+notifier.check()
 
 program.parse(process.argv)
