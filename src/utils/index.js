@@ -96,11 +96,14 @@ const utils = {
     return devices
   },
   spawn (opt) {
-    const command = opt.command || "echo 'a oh'"
+    const args = opt.command || "echo 'a oh'"
     const showLog = opt.showLog || true
     const msg = opt.msg || ''
-    const opts = Object.assign({}, { shell: true }, opt.opts)
-    const args = command.split(/\s+/)
+    const opts = Object.assign(
+      {},
+      { shell: true, env: { FORCE_COLOR: true } },
+      opt.opts
+    )
     const cmd = args.shift()
     return new Promise((resolve, reject) => {
       try {
@@ -111,7 +114,8 @@ const utils = {
           }
         })
         child.stderr.on('data', data => {
-          process.stderr.write('\n' + chalk.yellow(data.toString().trim()))
+          process.stdout.write(data)
+          // process.stderr.write('\n' + chalk.yellow(data.toString().trim()))
         })
         child.on('error', err => {
           reject(err)
@@ -132,7 +136,7 @@ const utils = {
           }
         })
       } catch (e) {
-        console.error('execute command failed :', command)
+        console.error('execute command failed :', cmd + ' ' + args.join(' '))
         reject(e)
       }
     })
@@ -176,16 +180,24 @@ const utils = {
       utils.boxLog(`请先进入您新建的项目：cd projName`)
       process.exit(1)
     }
-    const buildFramework = `node '${weweb}' ${projDir} -b -d ${tmpDistDir}/framework`
-    const buildDist = `node '${weweb}' ${projDir} -d ${tmpDistDir}/app `
+    const buildFramework = [
+      'node',
+      weweb,
+      projDir,
+      '-d',
+      `${tmpDistDir}/framework`
+    ]
+    // `node '${weweb}' ${projDir} -b -d ${tmpDistDir}/framework`
+    const buildDist = ['node', weweb, projDir, '-d', `${tmpDistDir}/app`]
+    // `node '${weweb}' ${projDir} -d ${tmpDistDir}/app `
 
     console.log(` => ${chalk.cyan.bold('start building app')}`)
     return utils
-      .exec(buildDist, true)
+      .spawn({ command: buildDist })
       .then(res => {
         if (options.changeFramework) {
           console.log(` => ${chalk.cyan.bold('building framework')}`)
-          return utils.exec(buildFramework, true)
+          return utils.spawn({ command: buildFramework })
         }
       })
       .then(() => console.log(` => ${chalk.cyan.bold('done building app')}`))

@@ -42,9 +42,9 @@ function run (platform = '', options = {}) {
     case 'ios':
       runIOS(options)
       break
-    case 'server':
-      runServer(options)
-      break
+    // case 'server':
+    //   runServer(options)
+    //   break
     case 'web':
       runWeb(options)
       break

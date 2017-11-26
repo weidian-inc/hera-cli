@@ -210,9 +210,8 @@ function buildApp ({ device, options }) {
       const cmd = process.platform === 'win32' ? `gradlew.bat` : `./gradlew`
       let args = options.clean ? ['clean'] : []
       args.push('assemble')
-
       return spawn({
-        command: `${cmd} ${args.join(' ')}`,
+        command: [cmd, args],
         showLog: true
       }).then(() =>
         resolve({

@@ -105,7 +105,7 @@ function installDep ({ xcodeProject, options, rootPath }) {
     'sudo gem install cocoapods\n' +
     '参考：https://weidian-inc.github.io/hera/#/basics/quickstart'
   return (
-    spawn({ command: 'pod update', msg: chalk.yellow(msg) })
+    spawn({ command: ['pod', 'update'], msg: chalk.yellow(msg) })
       // .then(() =>
       //   spawn({ command: 'pod install' })
       // )
@@ -239,7 +239,7 @@ function _buildOnSimulator ({
     const cmd = `xcodebuild -${xcodeProject.isWorkspace
       ? 'workspace'
       : 'project'} ${xcodeProject.name} ${schemeArg} -configuration Debug -destination id=${device.udid} -sdk iphonesimulator -derivedDataPath build clean build`
-    spawn({ command: cmd }).then(() =>
+    spawn({ command: cmd.split(' ') }).then(() =>
       resolve({ device, xcodeProject, options })
     )
   } catch (e) {
@@ -277,7 +277,6 @@ function _buildOnRealDevice ({
       'build'
     ]
 
-    const cmd = `xcodebuild ${xcodebuildArgs.join(' ')}`
     // buildInfo =
     const msg =
       chalk.cyan('第一次构建需主动添加账号信息, 使用如下命令在 Xcode 中打开此项目') +
@@ -286,7 +285,7 @@ function _buildOnRealDevice ({
       '\n' +
       '文档：https://weidian-inc.github.io/hera/#/ios/ios-real-device'
 
-    spawn({ command: cmd, msg })
+    spawn({ command: ['xcodebuild', xcodebuildArgs], msg })
       .then(() => resolve({ device, xcodeProject, options }))
       .catch(e => process.exit(1))
   } catch (e) {
@@ -419,10 +418,15 @@ function _runAppOnDevice ({ device, xcodeProject, options, resolve, reject }) {
     '1. Make sure you have ios-deploy installed globally.\n' +
     '(e.g "npm install -g ios-deploy")\n' +
     '2. Make sure you have your iPhone unlocked.'
+  const args = [
+    '--justlaunch',
+    '--id',
+    deviceId,
+    '--bundle',
+    path.resolve(appPath)
+  ]
   return spawn({
-    command: `ios-deploy --justlaunch --id ${deviceId} --bundle ${path.resolve(
-      appPath
-    )}`,
+    command: ['ios-deploy', args],
     msg: chalk.cyan(msg)
   })
 }

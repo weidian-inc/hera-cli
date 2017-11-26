@@ -41,7 +41,7 @@ module.exports = function (options) {
   //     })
   // }
 
-  const cmd = `git clone ${repo} ${distDir}`
+  const cmd = ['git', 'clone', repo, distDir]
   if (check(process.cwd())) {
     console.log(` => ${chalk.cyan.bold(`Platform Exists (${platform})`)}`)
     return Promise.resolve()

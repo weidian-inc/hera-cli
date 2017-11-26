@@ -61,7 +61,7 @@ var notifier = new UpdateNotifier({
   }
 })
 
+program.parse(process.argv)
+
 // 执行更新检查
 notifier.check()
-
-program.parse(process.argv)
