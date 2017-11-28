@@ -190,9 +190,13 @@ const utils = {
       '-d',
       `${tmpDistDir}/framework`
     ]
-    // `node '${weweb}' ${projDir} -b -d ${tmpDistDir}/framework`
-    const buildDist = ['node', weweb, projDir, '-d', `${tmpDistDir}/app`]
-    // `node '${weweb}' ${projDir} -d ${tmpDistDir}/app `
+    const buildDist = [
+      'node',
+      JSON.stringify(weweb),
+      projDir,
+      '-d',
+      `${tmpDistDir}/app`
+    ]
 
     console.log(` => ${chalk.cyan.bold('start building app')}`)
     return utils
