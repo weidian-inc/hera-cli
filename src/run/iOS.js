@@ -268,7 +268,8 @@ function _buildOnRealDevice ({
     var xcodebuildArgs = [
       xcodeProject.isWorkspace ? '-workspace' : '-project',
       xcodeProject.name,
-      '-configuration Debug',
+      '-configuration',
+      'Debug',
       '-scheme',
       scheme,
       '-destination',
@@ -285,7 +286,7 @@ function _buildOnRealDevice ({
       '\n' +
       '文档：https://weidian-inc.github.io/hera/#/ios/ios-real-device'
 
-    spawn({ command: ['xcodebuild', xcodebuildArgs], msg })
+    spawn({ command: ['xcodebuild'].concat(xcodebuildArgs), msg })
       .then(() => resolve({ device, xcodeProject, options }))
       .catch(e => process.exit(1))
   } catch (e) {
@@ -426,7 +427,7 @@ function _runAppOnDevice ({ device, xcodeProject, options, resolve, reject }) {
     path.resolve(appPath)
   ]
   return spawn({
-    command: ['ios-deploy', args],
+    command: ['ios-deploy'].concat(args),
     msg: chalk.cyan(msg)
   })
 }

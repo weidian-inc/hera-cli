@@ -211,7 +211,7 @@ function buildApp ({ device, options }) {
       let args = options.clean ? ['clean'] : []
       args.push('assemble')
       return spawn({
-        command: [cmd, args],
+        command: [cmd].concat(args),
         showLog: true
       }).then(() =>
         resolve({

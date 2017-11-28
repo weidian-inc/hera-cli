@@ -100,8 +100,11 @@ const utils = {
     const showLog = opt.showLog || true
     const msg = opt.msg || ''
     const opts = Object.assign(
-      {},
-      { shell: true, env: { FORCE_COLOR: true } },
+      {
+        shell: true,
+        encoding: 'utf8',
+        env: Object.assign({ FORCE_COLOR: true }, process.env)
+      },
       opt.opts
     )
     const cmd = args.shift()
