@@ -8,26 +8,14 @@ const chalk = require('chalk')
  * @param {Object} options
  */
 function runWeb (options) {
-  const weweb = path.resolve(
-    __dirname,
-    '../../node_modules/weweb-cli/bin/weweb'
+  const weweb = JSON.stringify(
+    path.resolve(__dirname, '../../node_modules/weweb-cli/bin/weweb')
   )
-
-  let projDir = ''
-  if (fs.existsSync('config.json')) {
-    let content = fs.readFileSync('config.json', { encoding: 'utf8' })
-    projDir = JSON.parse(content).dir
-  } else {
-    boxLog(
-      chalk.yellow('cd to your project\n') +
-        'or create config.json manually, fill it with: {"dir": "path/to/wxapp"}'
-    )
-  }
 
   const buildWeb = [
     'node',
-    JSON.stringify(weweb),
-    projDir,
+    weweb,
+    options.appDir,
     '-b',
     '-d',
     `${tmpDistDir}/web`

@@ -18,10 +18,11 @@ function init (projectName, configFile) {
   const srcPath = resolve(__dirname, 'templates')
   const distPath = resolve(process.cwd(), projectName)
 
+  const wxAppDir = 'dist'
   const doneCallback = () => {
     fs.writeFileSync(
       resolve(distPath, 'config.json'),
-      JSON.stringify({ dir: projectName }, 4)
+      JSON.stringify({ dir: wxAppDir }, 4)
     )
     fs.writeFileSync(resolve(distPath, '.gitignore'), 'heraTmp')
     console.log(
@@ -38,7 +39,7 @@ function init (projectName, configFile) {
       `${chalk.cyan('Run on ios:')} ${chalk.yellow('hera run ios')}`
     boxLog(msg)
   }
-  fse.copy(srcPath, resolve(distPath, projectName)).then(doneCallback)
+  fse.copy(srcPath, resolve(distPath, wxAppDir)).then(doneCallback)
 }
 
 module.exports = init

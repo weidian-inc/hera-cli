@@ -4,6 +4,7 @@ const runAndroid = require('./run/Android')
 const addPlatform = require('./add')
 const { boxLog } = require('./utils')
 const runIOS = require('./run/iOS')
+const fs = require('fs')
 const runServer = require('./run/Server')
 const runWeb = require('./run/web')
 /**
@@ -35,6 +36,20 @@ function init (projectName = '', configFile = '') {
 function run (platform = '', options = {}) {
   platform = platform.toLocaleLowerCase()
   options.platform = platform
+
+  // check where user store their wxapp
+  if (fs.existsSync('config.json')) {
+    let content = fs.readFileSync('config.json', { encoding: 'utf8' })
+    options.appDir = JSON.parse(content).dir
+  } else if (fs.existsSync('dist')) {
+    options.appDir = 'dist'
+  } else {
+    boxLog(
+      chalk.yellow('cd to your project\n') +
+        'or create config.json manually, fill it with: {"dir": "path/to/wxapp"}'
+    )
+  }
+
   switch (platform) {
     case 'android':
       runAndroid(options)

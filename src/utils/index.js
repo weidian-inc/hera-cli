@@ -170,19 +170,12 @@ const utils = {
     })
   },
   buildJS (options) {
-    const weweb = path.resolve(
-      __dirname,
-      '../../node_modules/hera-weweb/bin/weweb'
+    const weweb = JSON.stringify(
+      path.resolve(__dirname, '../../node_modules/hera-weweb/bin/weweb')
     )
 
-    let projDir = ''
-    if (fs.existsSync('config.json')) {
-      let content = fs.readFileSync('config.json', { encoding: 'utf8' })
-      projDir = JSON.parse(content).dir
-    } else {
-      utils.boxLog(`请先进入您新建的项目：cd projName`)
-      process.exit(1)
-    }
+    let projDir = options.appDir
+
     const buildFramework = [
       'node',
       weweb,
@@ -190,13 +183,7 @@ const utils = {
       '-d',
       `${tmpDistDir}/framework`
     ]
-    const buildDist = [
-      'node',
-      JSON.stringify(weweb),
-      projDir,
-      '-d',
-      `${tmpDistDir}/app`
-    ]
+    const buildDist = ['node', weweb, projDir, '-d', `${tmpDistDir}/app`]
 
     console.log(` => ${chalk.cyan.bold('start building app')}`)
     return utils
