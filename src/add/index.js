@@ -73,7 +73,7 @@ module.exports = function (options) {
 
           const msg =
             chalk.red.bold(`Error downloading platform ${platform}, try:\n`) +
-            chalk.yellow.bold(cmd)
+            chalk.yellow.bold(cmd.join(' '))
           boxLog(msg)
           process.exit(1)
         })

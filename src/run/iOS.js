@@ -5,6 +5,7 @@ const inquirer = require('inquirer')
 const {
   buildJS,
   spawn,
+  checkIOSEnv,
   findXcodeProject,
   parseIOSDevicesList,
   boxLog,
@@ -18,7 +19,8 @@ const { iosProjDir, iosScheme, tmpDistDir } = require('../config')
  * @param {Object} options
  */
 function runIOS (options) {
-  buildJS(options)
+  checkIOSEnv(options)
+    .then(buildJS)
     // .then(startJSServer)
     .then(prepareIOS)
     .then(({ xcodeProject, options, rootPath }) => {

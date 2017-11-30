@@ -107,10 +107,10 @@ const utils = {
       },
       opt.opts
     )
-    const cmd = args.shift()
+    const cmd = args[0]
     return new Promise((resolve, reject) => {
       try {
-        let child = childProcess.spawn(cmd, args, opts)
+        let child = childProcess.spawn(cmd, args.slice(1), opts)
         child.stdout.on('data', function (data) {
           if (showLog) {
             process.stdout.write(data)
@@ -129,9 +129,7 @@ const utils = {
           } else {
             console.log(chalk.red('\n=====v====='))
             console.log(
-              chalk.red(
-                `Error executing: ${chalk.yellow(cmd + ' ' + args.join(' '))}`
-              )
+              chalk.red(`Error executing: ${chalk.yellow(args.join(' '))}`)
             )
             if (msg) console.log(msg)
             console.log(chalk.red('=====^====='))
@@ -139,7 +137,7 @@ const utils = {
           }
         })
       } catch (e) {
-        console.error('execute command failed :', cmd + ' ' + args.join(' '))
+        console.error('execute command failed :', args.join(' '))
         reject(e)
       }
     })

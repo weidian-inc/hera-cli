@@ -3,7 +3,14 @@ const chalk = require('chalk')
 const childProcess = require('child_process')
 const fs = require('fs')
 const inquirer = require('inquirer')
-const { buildJS, parseDevicesResult, copy, spawn, boxLog } = require('../utils')
+const {
+  checkAndroidEnv,
+  buildJS,
+  parseDevicesResult,
+  copy,
+  spawn,
+  boxLog
+} = require('../utils')
 // const startJSServer = require('../utils/server')
 const addPlatform = require('../add')
 const {
@@ -20,7 +27,8 @@ const {
  * @param {Object} options
  */
 function runAndroid (options) {
-  buildJS(options)
+  checkAndroidEnv(options)
+    .then(buildJS)
     // .then(startJSServer)
     .then(prepareAndroid)
     .then(({ options, rootPath }) => {
@@ -241,6 +249,10 @@ function installApp ({ device, options }) {
         encoding: 'utf8'
       })
     } catch (e) {
+      if (~e.stderr.indexOf('INSTALL_FAILED_UPDATE_INCOMPATIBLE')) {
+        boxLog(chalk.red('您已安装过该应用，但是签名不合，请删除重试'))
+        process.exit(1)
+      }
       reject(e)
     }
 
