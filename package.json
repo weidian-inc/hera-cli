@@ -1,6 +1,6 @@
 {
   "name": "hera-cli",
-  "version": "1.2.5",
+  "version": "1.2.8",
   "description": "Hera Project Creator",
   "main": "bin/herapack",
   "scripts": {
@@ -27,7 +27,7 @@
     "chalk": "^2.3.0",
     "commander": "^2.12.2",
     "fs-extra": "^4.0.2",
-    "hera-weweb": "^1.0.3",
+    "hera-weweb": "^1.0.6",
     "inquirer": "^4.0.1",
     "pify": "^3.0.0",
     "semver-compare": "^1.0.0",
