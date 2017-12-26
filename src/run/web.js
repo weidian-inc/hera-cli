@@ -17,6 +17,7 @@ function runWeb (options) {
     weweb,
     options.appDir,
     '-b',
+    '--nocheck',
     '-d',
     `${tmpDistDir}/web`
   ]

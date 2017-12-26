@@ -1,12 +1,14 @@
 #!/usr/bin/env node
-
+require('../src/utils/nodeCheck')
 const program = require('commander')
 const { init, add, run } = require('../src/index')
 const UpdateNotifier = require('update-notifier').UpdateNotifier
 const semCmp = require('semver-compare')
 const json = require('../package.json')
 const chalk = require('chalk')
+
 const boxen = require('boxen')
+
 program.version(require('../package').version).usage('<command> [options]')
 
 program

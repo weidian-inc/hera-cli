@@ -7,6 +7,7 @@ const runIOS = require('./run/iOS')
 const fs = require('fs')
 const runServer = require('./run/Server')
 const runWeb = require('./run/web')
+
 /**
  * Get current version
  */
